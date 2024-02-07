@@ -1,5 +1,7 @@
-import MovingDirection from "./MovingDirection";
-import TileMap from "./TileMap";
+import MovingDirection from "./MovingDirection.js";
+import TileMap from "./TileMap.js";
+
+let up,down,left,right = false;
 
 export default class User {
 
@@ -44,18 +46,22 @@ export default class User {
         //up // esdf
         if(event.keyCode == 69){
             this.requestedMovingDirection = MovingDirection.up;
+            up = true;
         }
         //down
         if(event.keyCode == 68){
             this.requestedMovingDirection = MovingDirection.down;
+            down = true;
         }
         //left
         if(event.keyCode == 83) {
             this.requestedMovingDirection = MovingDirection.left;
+            left= true;
         }
         //right
         if(event.keyCode == 70) {
             this.requestedMovingDirection = MovingDirection.right;
+            right = true;
         }
 
         this.tileMap.encounter(this.x,
@@ -65,6 +71,10 @@ export default class User {
 
     #keyup = (event)=> {
         this.requestedMovingDirection = null;
+        up = false;
+        down = false;
+        left = false;
+        right = false;
     }
 
     #move(){
@@ -99,16 +109,28 @@ export default class User {
 
         switch (this.currentMovingDirection) { // Change les coordonnées de user selon la direction choisie
             case MovingDirection.up:
-                this.y -= this.velocity;
+                if(up){
+                    this.y -= this.tileSize;
+                    up = false;
+                }
                 break;
             case MovingDirection.down:
-                this.y += this.velocity;
+                if(down){
+                    this.y += this.tileSize;
+                    down = false;
+                }
                 break;
             case MovingDirection.left:
-                this.x -= this.velocity;
+                if(left){
+                    this.x -= this.tileSize;
+                    left = false;
+                }
                 break;
             case MovingDirection.right:
-                this.x += this.velocity;
+                if(right){
+                    this.x += this.tileSize;
+                    right = false;
+                }
                 break;
         }
     }

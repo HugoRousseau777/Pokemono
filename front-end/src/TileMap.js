@@ -1,7 +1,7 @@
 import User from './User.js';
 import MovingDirection from './MovingDirection.js';
 
-export default class TileMap {
+    export default class TileMap {
     constructor(tileSize){
         this.tileSize = tileSize;
         this.grass = this.#image("unnamed.png");
@@ -13,7 +13,7 @@ export default class TileMap {
 
     #image(fileName) {
         const img = new Image();
-        img.src = `./assets/img/${fileName}`;
+        img.src = `./assets/img/${fileName}`; // !!! Mokesh S on https://stackoverflow.com/questions/34582405/react-wont-load-local-images
         return img;
     }
 
@@ -31,7 +31,7 @@ export default class TileMap {
         [1, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 1],
         [1, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 1],
         [1, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 1],
@@ -141,20 +141,25 @@ export default class TileMap {
     return false;
 }
 
-    // Ajout rencontre pokemon
-    encounter(x,y) { 
+    // Ajout rencontre pokemon (encounter)
+     encounter = (x,y)=> { 
+        let a;
         let column = Math.floor(x/this.tileSize);
         let row = Math.floor(y/this.tileSize);
-
         const tile = this.map[row][column];
         
         if(tile == 2){
             for(let i=0; i<1; i++){
                 let random = Math.random() * 100;
                 if(random < 30){
-                    console.log("Un pokemon sauvage apparaît !");
+                   // console.log("Un pokemon sauvage apparaît !");
+                    return a = true;
                 }
             }
-        }
-    }
+        }  
+    } 
 }
+
+
+
+

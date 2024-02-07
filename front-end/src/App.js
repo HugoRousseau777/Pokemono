@@ -1,17 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './Nav';
+import Combat from './components/Combat';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-     <Nav/>
+     
      <Routes>
-       <Route path="/" element={<h1>Component principal</h1>}/>
+       <Route path="/" element={<Nav/>}/>
+       <Route path="/combat" element={<Combat/>}/>
      </Routes>
-     <h1>Yoyoyo</h1>
      </BrowserRouter>
     </div>
   );
